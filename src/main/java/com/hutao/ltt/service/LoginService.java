@@ -7,8 +7,8 @@ import com.hutao.ltt.pojo.User;
  * @Description
  * @date 2022/3/2 20:45
  */
-public interface UserService {
+public interface LoginService {
 	
-	Integer selectByAccountAndPassword(User user);
+	Integer getAccountAndPwd(User user);
 	
 }

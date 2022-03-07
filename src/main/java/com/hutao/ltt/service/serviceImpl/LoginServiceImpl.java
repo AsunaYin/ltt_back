@@ -1,8 +1,8 @@
 package com.hutao.ltt.service.serviceImpl;
 
-import com.hutao.ltt.mapper.UserMapper;
+import com.hutao.ltt.mapper.LoginMapper;
 import com.hutao.ltt.pojo.User;
-import com.hutao.ltt.service.UserService;
+import com.hutao.ltt.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,15 +12,14 @@ import org.springframework.stereotype.Service;
  * @date 2022/3/2 20:46
  */
 @Service
-public class UserServiceImpl implements UserService {
+public class LoginServiceImpl implements LoginService {
 	
 	@Autowired
-	private UserMapper userMapper;
-	
+	private LoginMapper loginMapper;
 	
 	@Override
-	public Integer selectByAccountAndPassword(User user) {
-		Integer i = userMapper.selectByAccountAndPassword(user);
+	public Integer getAccountAndPwd(User user) {
+		Integer i = loginMapper.getAccountAndPwd(user);
 		return i;
 	}
 }
