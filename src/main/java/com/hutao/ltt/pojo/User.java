@@ -22,6 +22,7 @@ public class User {
 	private Integer id;
 	private String account;
 	private String password;
+	private Integer auth_id;
 	
 	public Integer getId() {
 		return id;

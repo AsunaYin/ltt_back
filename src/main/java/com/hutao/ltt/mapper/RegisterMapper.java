@@ -1,6 +1,7 @@
 package com.hutao.ltt.mapper;
 
 import com.hutao.ltt.pojo.User;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -14,9 +15,10 @@ public interface RegisterMapper {
 	
 	//确认账号是否已经被注册
 	@Select("select id from user where account = #{account}")
-	Integer confirmAcc(String acconut);
+	String confirmAcc(String acconut);
 	
 	//注册
+	@Insert("insert into user(account, password, auth_id) VALUES(#{account},#{password},#{auth_id})")
 	int register(User user);
 	
 }

@@ -1,6 +1,7 @@
 package com.hutao.ltt.service.serviceImpl;
 
 import com.hutao.ltt.mapper.RegisterMapper;
+import com.hutao.ltt.pojo.User;
 import com.hutao.ltt.service.RegisterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,7 +23,17 @@ public class RegisterServiceImpl implements RegisterService {
 	 * @return
 	 */
 	@Override
-	public Integer confirmAcc(String account) {
+	public String confirmAcc(String account) {
 		return registerMapper.confirmAcc(account);
+	}
+	
+	/**
+	 * 注册
+	 * @param user
+	 * @return
+	 */
+	@Override
+	public int register(User user) {
+		return registerMapper.register(user);
 	}
 }

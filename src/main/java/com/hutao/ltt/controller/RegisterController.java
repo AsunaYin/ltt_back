@@ -1,11 +1,10 @@
 package com.hutao.ltt.controller;
 
+import com.hutao.ltt.pojo.User;
 import com.hutao.ltt.service.RegisterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author HUTAO
@@ -26,12 +25,25 @@ public class RegisterController {
 	 */
 	@GetMapping("/confirmAcc")
 	public String ConfirmAccount(String account){
-		Integer i = registerService.confirmAcc(account);
+		String i = registerService.confirmAcc(account);
 		if (i == null){
-			return "error";
+			return "success";
 		}
-		return "OK";
+		return "error";
 	}
 	
+	/**
+	 * 注册
+	 * @param user
+	 * @return
+	 */
+	@PostMapping("/submit")
+	public String register(@RequestBody User user){
+		int i = registerService.register(user);
+		if (i == 1){
+			return "success";
+		}
+		return "error";
+	}
 	
 }
