@@ -12,6 +12,7 @@ import org.apache.ibatis.annotations.Select;
 @Mapper
 public interface LoginMapper {
 	
+	//登录
 	@Select("select auth_id from user where account = #{account} and password = #{password}")
 	Integer getAccountAndPwd(User user);
 	

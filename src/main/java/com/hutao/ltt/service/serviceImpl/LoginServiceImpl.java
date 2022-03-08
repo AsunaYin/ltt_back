@@ -17,6 +17,11 @@ public class LoginServiceImpl implements LoginService {
 	@Autowired
 	private LoginMapper loginMapper;
 	
+	/**
+	 * 登录
+	 * @param user
+	 * @return
+	 */
 	@Override
 	public Integer getAccountAndPwd(User user) {
 		Integer i = loginMapper.getAccountAndPwd(user);

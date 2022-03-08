@@ -9,6 +9,7 @@ import com.hutao.ltt.pojo.User;
  */
 public interface LoginService {
 	
+	//登录
 	Integer getAccountAndPwd(User user);
 	
 }
