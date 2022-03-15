@@ -1,6 +1,7 @@
 package com.hutao.ltt.service;
 
 import com.hutao.ltt.pojo.User;
+import org.apache.ibatis.annotations.Insert;
 
 /**
  * @author HUTAO
@@ -14,5 +15,12 @@ public interface RegisterService {
 	
 	//注册
 	int register(User user);
+	
+	//注册成功后，插入基本信息
+	//存入学生信息
+	int addStudentInfo(User user);
+	
+	//存入老师信息
+	int addTeacherInfo(User user);
 	
 }

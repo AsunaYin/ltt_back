@@ -21,4 +21,13 @@ public interface RegisterMapper {
 	@Insert("insert into user(account, password, auth_id) VALUES(#{account},#{password},#{auth_id})")
 	int register(User user);
 	
+	//注册后添加信息到对应的info表
+	//存入学生信息
+	@Insert("insert into student_info(account,phone,regist_date) values(#{account},null,#{regist_date})")
+	int addStudentInfo(User user);
+	
+	//存入老师信息
+	@Insert("insert into teacher_info(account,phone,regist_date) values(#{account},null,#{regist_date})")
+	int addTeacherInfo(User user);
+	
 }

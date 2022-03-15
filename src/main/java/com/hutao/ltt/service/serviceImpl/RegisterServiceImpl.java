@@ -36,4 +36,24 @@ public class RegisterServiceImpl implements RegisterService {
 	public int register(User user) {
 		return registerMapper.register(user);
 	}
+	
+	/**
+	 * 注册成功后，插入学生基本信息
+	 * @param user
+	 * @return
+	 */
+	@Override
+	public int addStudentInfo(User user) {
+		return registerMapper.addStudentInfo(user);
+	}
+	
+	/**
+	 * 注册成功后，插入老师基本信息
+	 * @param user
+	 * @return
+	 */
+	@Override
+	public int addTeacherInfo(User user) {
+		return registerMapper.addTeacherInfo(user);
+	}
 }

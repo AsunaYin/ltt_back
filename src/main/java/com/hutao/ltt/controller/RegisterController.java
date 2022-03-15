@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Date;
+import java.time.LocalDate;
+
 /**
  * @author HUTAO
  * @Description
@@ -40,8 +43,16 @@ public class RegisterController {
 	@PostMapping("/submit")
 	public String register(@RequestBody User user){
 		int i = registerService.register(user);
-		if (i == 1){
-			return "success";
+		if (1 == i){
+			if (2 == user.getAuth_id()){
+				user.setRegist_date(LocalDate.now());
+				registerService.addTeacherInfo(user);
+				return "success";
+			} else if (3 == user.getAuth_id()){
+				user.setRegist_date(LocalDate.now());
+				registerService.addStudentInfo(user);
+				return "success";
+			}
 		}
 		return "error";
 	}
