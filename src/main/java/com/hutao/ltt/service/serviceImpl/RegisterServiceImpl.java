@@ -1,6 +1,7 @@
 package com.hutao.ltt.service.serviceImpl;
 
 import com.hutao.ltt.mapper.RegisterMapper;
+import com.hutao.ltt.pojo.StuTea;
 import com.hutao.ltt.pojo.User;
 import com.hutao.ltt.service.RegisterService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,5 +56,25 @@ public class RegisterServiceImpl implements RegisterService {
 	@Override
 	public int addTeacherInfo(User user) {
 		return registerMapper.addTeacherInfo(user);
+	}
+	
+	/**
+	 * 根据 account 查找 id
+	 * @param account
+	 * @return
+	 */
+	@Override
+	public int selectIdByAccount(String account) {
+		return registerMapper.selectIdByAccount(account);
+	}
+	
+	/**
+	 * 在注册时，往 学生-老师 表中存入信息
+	 * @param id
+	 * @return
+	 */
+	@Override
+	public int addStuTea(int id) {
+		return registerMapper.addStuTea(id);
 	}
 }

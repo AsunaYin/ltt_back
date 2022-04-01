@@ -1,5 +1,6 @@
 package com.hutao.ltt.service;
 
+import com.hutao.ltt.pojo.StuTea;
 import com.hutao.ltt.pojo.User;
 import org.apache.ibatis.annotations.Insert;
 
@@ -22,5 +23,11 @@ public interface RegisterService {
 	
 	//存入老师信息
 	int addTeacherInfo(User user);
+	
+	//根据 account 查找 id
+	int selectIdByAccount(String account);
+	
+	//在注册时，往 学生-老师 表中存入信息
+	int addStuTea(int id);
 	
 }

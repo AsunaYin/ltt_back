@@ -43,14 +43,22 @@ public class RegisterController {
 	@PostMapping("/submit")
 	public String register(@RequestBody User user){
 		int i = registerService.register(user);
+		//判断是否注册成功
 		if (1 == i){
+			//注册成功，如果 auth_id = 2，存入老师信息表
 			if (2 == user.getAuth_id()){
 				user.setRegist_date(LocalDate.now());
 				registerService.addTeacherInfo(user);
 				return "success";
 			} else if (3 == user.getAuth_id()){
+				//注册成功，如果 auth_id = 3，存入学生信息表
 				user.setRegist_date(LocalDate.now());
 				registerService.addStudentInfo(user);
+				//通过user表的 account 查找 student_info表对应 account 的 id
+				String account = user.getAccount();
+				int id = registerService.selectIdByAccount(account);
+				//添加进 stu_tea 表
+				registerService.addStuTea(id);
 				return "success";
 			}
 		}

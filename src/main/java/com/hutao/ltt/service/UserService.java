@@ -15,12 +15,6 @@ import java.util.List;
  */
 public interface UserService {
 	
-	//查询所有学生信息
-//	List<StudentInfo> selectAllStudent();
-	
-	//查询所有老师信息
-//	List<TeacherInfo> selectAllTeacher();
-	
 	//分页显示学生名单
 	IPage<StudentInfo> selectAllStudentsByPage(Integer pageNum,Integer pageSize);
 	

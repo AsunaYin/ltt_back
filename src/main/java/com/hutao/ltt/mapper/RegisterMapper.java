@@ -1,5 +1,6 @@
 package com.hutao.ltt.mapper;
 
+import com.hutao.ltt.pojo.StuTea;
 import com.hutao.ltt.pojo.User;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
@@ -29,5 +30,13 @@ public interface RegisterMapper {
 	//存入老师信息
 	@Insert("insert into teacher_info(account,phone,regist_date) values(#{account},null,#{regist_date})")
 	int addTeacherInfo(User user);
+	
+	//根据 account 查找 id
+	@Select("select id from student_info where account = #{account}")
+	int selectIdByAccount(String account);
+	
+	//在注册时，往 学生-老师 表中存入信息
+	@Insert("insert into stu_tea(sid, tid) values(#{sid},null)")
+	int addStuTea(int id);
 	
 }

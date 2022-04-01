@@ -2,9 +2,13 @@ package com.hutao.ltt.controller;
 
 import com.hutao.ltt.pojo.User;
 import com.hutao.ltt.service.LoginService;
+import com.hutao.ltt.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author HUTAO
@@ -19,18 +23,36 @@ public class LoginController {
 	private LoginService loginService;
 	
 	@PostMapping("/login")
-	public String login(@RequestBody User user){
+	public Map<String, Object> login(@RequestBody User user){
+		Map<String, Object> map = new HashMap<>();
 		Integer i = loginService.getAccountAndPwd(user);
 		if(i != null){
+			//获取 token
+			Map<String, String> payload = new HashMap<>();
+			payload.put("account",user.getAccount());
+			String token = JwtUtil.getToken(payload);
 			if (i == 1){
-				return "manager";
+				map.put("state",true);
+				map.put("msg","认证成功");
+				map.put("role",1);
+				map.put("token",token);
+				return map;
 			} else if (i == 2){
-				return "teacher";
+				map.put("state",true);
+				map.put("msg","认证成功");
+				map.put("role",2);
+				map.put("token",token);
+				return map;
 			} else if (i == 3){
-				return "student";
+				map.put("state",true);
+				map.put("msg","认证成功");
+				map.put("role",3);
+				map.put("token",token);
+				return map;
 			}
 		}
-		return "error";
+		map.put("msg","认证失败");
+		return map;
 	}
 	
 }
