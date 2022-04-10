@@ -26,14 +26,14 @@ public interface UserMapper extends BaseMapper<User>{
 	//查询所有老师信息
 //	@Select("select * from teacher_info")
 //	List<TeacherInfo> selectAllTeacher();
-	
+
 	//根据姓名查询学生信息
-	@Select("select * from student_info where realname like #{realName}")
-	List<StudentInfo> selectByStudentName(String realName);
-	
+//	@Select("select * from student_info where realname like #{realName}")
+//	List<StudentInfo> selectByStudentName(String realName);
+
 	//根据姓名查询老师信息
-	@Select("select * from teacher_info where realname like #{realName}")
-	List<TeacherInfo> selectByTeacherName(String realName);
+//	@Select("select * from teacher_info where realname like #{realName}")
+//	List<TeacherInfo> selectByTeacherName(String realName);
 	
 	//在info表删完数据后，在user表里也得删
 	@Delete("delete from user where account = #{account}")

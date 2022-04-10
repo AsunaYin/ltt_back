@@ -45,14 +45,24 @@ public class TeacherController {
 	}
 	
 	/**
+	 * 根据 account 查找老师
+	 * @param account
+	 * @return
+	 */
+	@GetMapping("/getTeacherByAccount")
+	public TeacherInfo selectTeacherByAccount(String account){
+		return userService.selectTeacherByAccount(account);
+	}
+	
+	/**
 	 * 根据老师姓名查找老师
 	 *
 	 * @return
 	 */
-	@PostMapping("/searchTeacher")
-	public List<TeacherInfo> selectTeacherByRealName(@RequestBody RealNameBean realName) {
+	@PostMapping("/searchTeacher/{page}")
+	public IPage<TeacherInfo> selectTeacherByRealName(@PathVariable("page") Integer pageNum,@RequestBody RealNameBean realName) {
 		String name = realName.getRealName();
-		return userService.selectByTeacherName(name);
+		return userService.selectByTeacherName(pageNum, 5, name);
 	}
 	
 	/**

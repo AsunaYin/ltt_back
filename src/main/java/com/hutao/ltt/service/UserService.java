@@ -27,6 +27,12 @@ public interface UserService {
 	//根据id获取老师信息
 	TeacherInfo selectTeacherById(Integer id);
 	
+	//根据 account 获取学生信息
+	StudentInfo selectStudentByAccount(String account);
+	
+	//根据 account 获取老师信息
+	TeacherInfo selectTeacherByAccount(String account);
+	
 	//修改学生信息
 	int updateStudentInfo(StudentInfo studentInfo) throws Exception;
 	
@@ -43,10 +49,10 @@ public interface UserService {
 	int deleteByAccount(String account);
 	
 	//根据姓名查找学生
-	List<StudentInfo> selectByStudentName(String realName);
+	IPage<StudentInfo> selectByStudentName(Integer pageNum,Integer pageSize,String realName);
 	
 	//根据姓名查找老师
-	List<TeacherInfo> selectByTeacherName(String realName);
+	IPage<TeacherInfo> selectByTeacherName(Integer pageNum,Integer pageSize,String realName);
 	
 	
 }

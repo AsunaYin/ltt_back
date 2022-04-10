@@ -17,7 +17,7 @@ import java.util.Date;
  * @date 2022/3/2 20:42
  */
 @Data
-@TableName("users")
+@TableName("user")
 public class User {
 	@TableId(type = IdType.AUTO)
 	private Integer id;

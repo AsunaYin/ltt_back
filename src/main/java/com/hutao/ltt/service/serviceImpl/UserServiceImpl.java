@@ -1,5 +1,7 @@
 package com.hutao.ltt.service.serviceImpl;
 
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hutao.ltt.mapper.UserMapper;
@@ -94,6 +96,30 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	/**
+	 * 根据 account 获取学生信息
+	 * @param account
+	 * @return
+	 */
+	@Override
+	public StudentInfo selectStudentByAccount(String account) {
+		QueryWrapper<StudentInfo> wrapper = new QueryWrapper<>();
+		wrapper.eq("account",account);
+		return studentMapper.selectOne(wrapper);
+	}
+	
+	/**
+	 * 根据 account 获取老师信息
+	 * @param account
+	 * @return
+	 */
+	@Override
+	public TeacherInfo selectTeacherByAccount(String account) {
+		QueryWrapper<TeacherInfo> wrapper = new QueryWrapper<>();
+		wrapper.eq("account",account);
+		return teacherMapper.selectOne(wrapper);
+	}
+	
+	/**
 	 * 修改学生信息
 	 * @param studentInfo
 	 * @return 影响的行数
@@ -150,9 +176,13 @@ public class UserServiceImpl implements UserService {
 	 * @return
 	 */
 	@Override
-	public List<StudentInfo> selectByStudentName(String realName) {
-		return userMapper.selectByStudentName("%" + realName + "%");
+	public IPage<StudentInfo> selectByStudentName(Integer pageNum,Integer pageSize,String realName){
+		QueryWrapper<StudentInfo> wrapper = new QueryWrapper<>();
+		wrapper.like("realname",realName);
+		Page<StudentInfo> page = new Page<>(pageNum,pageSize);
+		return studentMapper.selectPage(page,wrapper);
 	}
+	
 	
 	/**
 	 * 根据姓名查找老师
@@ -160,8 +190,11 @@ public class UserServiceImpl implements UserService {
 	 * @return
 	 */
 	@Override
-	public List<TeacherInfo> selectByTeacherName(String realName) {
-		return userMapper.selectByTeacherName("%" + realName + "%");
+	public IPage<TeacherInfo> selectByTeacherName(Integer pageNum,Integer pageSize,String realName){
+		QueryWrapper<TeacherInfo> wrapper = new QueryWrapper<>();
+		wrapper.like("realname",realName);
+		Page<TeacherInfo> page = new Page<>(pageNum,pageSize);
+		return teacherMapper.selectPage(page,wrapper);
 	}
 	
 	

@@ -25,5 +25,6 @@ public class TeacherInfo {
 	private String phone;
 	private Date birthDate;
 	private Date registDate;
+	private String avatarUrl;
 	
 }
