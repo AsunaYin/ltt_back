@@ -1,6 +1,7 @@
 package com.hutao.ltt.mapper;
 
 import com.hutao.ltt.pojo.StuTea;
+import com.hutao.ltt.pojo.StudentInfo;
 import com.hutao.ltt.pojo.User;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
@@ -16,7 +17,7 @@ public interface RegisterMapper {
 	
 	//确认账号是否已经被注册
 	@Select("select id from user where account = #{account}")
-	String confirmAcc(String acconut);
+	String confirmAcc(String account);
 	
 	//注册
 	@Insert("insert into user(account, password, auth_id) VALUES(#{account},#{password},#{auth_id})")
@@ -24,11 +25,11 @@ public interface RegisterMapper {
 	
 	//注册后添加信息到对应的info表
 	//存入学生信息
-	@Insert("insert into student_info(account,phone,regist_date) values(#{account},null,#{regist_date})")
-	int addStudentInfo(User user);
+	@Insert("insert into student_info(account,phone,regist_date,realname) values(#{account},null,#{regist_date},#{realName})")
+	int addStudentInfo(StudentInfo studentInfo);
 	
 	//存入老师信息
-	@Insert("insert into teacher_info(account,phone,regist_date) values(#{account},null,#{regist_date})")
+	@Insert("insert into teacher_info(account,phone,regist_date,realname) values(#{account},null,#{regist_date},#{realName})")
 	int addTeacherInfo(User user);
 	
 	//根据 account 查找 id

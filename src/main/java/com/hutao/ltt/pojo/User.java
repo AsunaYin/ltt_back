@@ -3,13 +3,9 @@ package com.hutao.ltt.pojo;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
-import javax.lang.model.element.NestingKind;
 import java.time.LocalDate;
-import java.util.Date;
 
 /**
  * @author HUTAO
@@ -25,6 +21,7 @@ public class User {
 	private String password;
 	private Integer auth_id;
 	private LocalDate regist_date;
+	private String realName;
 	
 	public Integer getId() {
 		return id;

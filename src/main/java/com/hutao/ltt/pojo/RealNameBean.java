@@ -10,4 +10,7 @@ import lombok.Data;
 @Data
 public class RealNameBean {
 	private String realName;
+	private Integer tid;
+	private String account;
+	private Integer sid;
 }

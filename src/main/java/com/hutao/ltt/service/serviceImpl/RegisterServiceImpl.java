@@ -2,6 +2,7 @@ package com.hutao.ltt.service.serviceImpl;
 
 import com.hutao.ltt.mapper.RegisterMapper;
 import com.hutao.ltt.pojo.StuTea;
+import com.hutao.ltt.pojo.StudentInfo;
 import com.hutao.ltt.pojo.User;
 import com.hutao.ltt.service.RegisterService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,12 +41,12 @@ public class RegisterServiceImpl implements RegisterService {
 	
 	/**
 	 * 注册成功后，插入学生基本信息
-	 * @param user
+	 * @param studentInfo
 	 * @return
 	 */
 	@Override
-	public int addStudentInfo(User user) {
-		return registerMapper.addStudentInfo(user);
+	public int addStudentInfo(StudentInfo studentInfo) {
+		return registerMapper.addStudentInfo(studentInfo);
 	}
 	
 	/**

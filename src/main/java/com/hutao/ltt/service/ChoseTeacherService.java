@@ -1,5 +1,6 @@
 package com.hutao.ltt.service;
 
+import com.hutao.ltt.pojo.TeacherInfo;
 import org.apache.ibatis.annotations.Select;
 
 /**
@@ -11,5 +12,10 @@ public interface ChoseTeacherService {
 	
 	//判断 学生是否已选择老师
 	int selectTidBySid(int sid);
+	
+	//确认选择老师
+	int addTeacherToStudent(Integer sid, Integer tid);
+	
+	Integer selectTidBySid(Integer sid);
 	
 }

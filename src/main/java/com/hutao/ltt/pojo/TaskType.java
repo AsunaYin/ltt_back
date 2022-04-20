@@ -5,26 +5,20 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
-
-import java.time.LocalDate;
+import org.springframework.data.relational.core.mapping.Table;
 
 /**
  * @author HUTAO
  * @Description
- * @date 2022/3/15 17:09
+ * @date 2022/4/13 15:06
  */
 @Data
-@TableName("teacher_info")
-public class TeacherInfo {
+@TableName("task_type")
+public class TaskType {
+	
 	@TableId(type = IdType.AUTO)
 	private Integer id;
-	private String account;
-	@TableField("realname")
-	private String realName;
-	private String sex;
-	private String phone;
-	private LocalDate birthDate;
-	private LocalDate registDate;
-	private String avatarUrl;
-	
+	@TableField("typename")
+	private String typeName;
+
 }

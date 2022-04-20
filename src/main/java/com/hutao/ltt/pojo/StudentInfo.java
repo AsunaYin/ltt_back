@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -23,7 +24,7 @@ public class StudentInfo {
 	private String realName;
 	private String sex;
 	private String phone;
-	private Date birthDate;
-	private Date registDate;
+	private LocalDate birthDate;
+	private LocalDate registDate;
 	private String avatarUrl;
 }

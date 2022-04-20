@@ -17,6 +17,10 @@ spring:
     user:
       name: user
       password: password
+  jackson:
+    date-format: yyyy-MM-dd
+    time-zone: GMT+8
+
 
 mybatis-plus:
   configuration:

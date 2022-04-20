@@ -1,7 +1,9 @@
 package com.hutao.ltt.controller;
 
 import com.hutao.ltt.pojo.User;
+import com.hutao.ltt.service.ChoseTeacherService;
 import com.hutao.ltt.service.LoginService;
+import com.hutao.ltt.service.UserService;
 import com.hutao.ltt.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +24,12 @@ public class LoginController {
 	@Autowired
 	private LoginService loginService;
 	
+	@Autowired
+	private UserService userService;
+	
+	@Autowired
+	private ChoseTeacherService choseTeacherService;
+	
 	@PostMapping("/login")
 	public Map<String, Object> login(@RequestBody User user){
 		Map<String, Object> map = new HashMap<>();
@@ -38,15 +46,21 @@ public class LoginController {
 				map.put("token",token);
 				return map;
 			} else if (i == 2){
+				Integer tid = userService.selectTeacherByAccount(user.getAccount()).getId();
 				map.put("state",true);
 				map.put("msg","认证成功");
 				map.put("role",2);
+				map.put("tid",tid);
 				map.put("token",token);
 				return map;
 			} else if (i == 3){
+				Integer sid = userService.selectStudentByAccount(user.getAccount()).getId();
+				Integer tid = choseTeacherService.selectTidBySid(sid);
 				map.put("state",true);
 				map.put("msg","认证成功");
 				map.put("role",3);
+				map.put("sid",sid);
+				map.put("tid",tid);
 				map.put("token",token);
 				return map;
 			}

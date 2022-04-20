@@ -1,5 +1,6 @@
 package com.hutao.ltt.controller;
 
+import com.hutao.ltt.pojo.StudentInfo;
 import com.hutao.ltt.pojo.User;
 import com.hutao.ltt.service.RegisterService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,7 +54,11 @@ public class RegisterController {
 			} else if (3 == user.getAuth_id()){
 				//注册成功，如果 auth_id = 3，存入学生信息表
 				user.setRegist_date(LocalDate.now());
-				registerService.addStudentInfo(user);
+				StudentInfo student = new StudentInfo();
+				student.setAccount(user.getAccount());
+				student.setRegistDate(user.getRegist_date());
+				student.setRealName(user.getRealName());
+				registerService.addStudentInfo(student);
 				//通过user表的 account 查找 student_info表对应 account 的 id
 				String account = user.getAccount();
 				int id = registerService.selectIdByAccount(account);
