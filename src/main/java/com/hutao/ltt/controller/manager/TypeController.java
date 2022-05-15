@@ -54,4 +54,42 @@ public class TypeController {
 		} else return "error";
 	}
 	
+	/**
+	 * 判断当前类别是否存在任务
+	 * @param typeName
+	 * @return
+	 */
+	@GetMapping("/hasType")
+	public String selectTypeCount(String typeName){
+		Integer i = taskTypeService.selectTypeCount(typeName);
+		if (0 == i){
+			return "success";
+		} else return "error";
+	}
+	
+	/**
+	 * 更改任务类别名
+	 * @param taskType
+	 * @return
+	 */
+	@PostMapping("/editType")
+	public String updateTypeName(@RequestBody TaskType taskType){
+		Integer i = taskTypeService.updateTypeName(taskType);
+		if (1 == i){
+			return "success";
+		} else return "error";
+	}
+	
+	/**
+	 * 删除任务类别，同时删除该类别的所有任务
+	 * @param taskType
+	 * @return
+	 */
+	@PostMapping("/deleteType")
+	public String deleteType(@RequestBody TaskType taskType){
+		Integer i = taskTypeService.deleteType(taskType);
+		if (1 == i){
+			return "success";
+		} else return "error";
+	}
 }

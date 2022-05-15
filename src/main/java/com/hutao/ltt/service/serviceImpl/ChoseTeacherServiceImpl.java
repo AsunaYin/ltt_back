@@ -8,6 +8,8 @@ import com.hutao.ltt.service.ChoseTeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+
 /**
  * @author HUTAO
  * @Description
@@ -35,8 +37,8 @@ public class ChoseTeacherServiceImpl implements ChoseTeacherService {
 	 * @return
 	 */
 	@Override
-	public int addTeacherToStudent(Integer sid,Integer tid) {
-		return choseTeacherMapper.addTeacherToStudent(sid,tid);
+	public int addTeacherToStudent(Integer sid,Integer tid, Integer result, LocalDateTime applyTime) {
+		return choseTeacherMapper.addTeacherToStudent(sid,tid,result,applyTime);
 	}
 	
 	@Override

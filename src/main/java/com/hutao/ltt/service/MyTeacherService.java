@@ -12,4 +12,5 @@ public interface MyTeacherService {
 	//根据 tid 获取老师信息
 	TeacherInfo getMyTeacher(Integer tid);
 	
+	Integer getTid(String account);
 }

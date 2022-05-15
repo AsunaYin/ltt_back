@@ -20,11 +20,11 @@ public interface MyStudentMapper extends BaseMapper<StudentInfo> {
 	 * @param tid
 	 * @return
 	 */
-	@Select("select sid from stu_tea where tid = #{tid}")
+	@Select("select sid from stu_tea where tid = #{tid} AND result = 1")
 	List<Integer> selectSidByTid(Integer tid);
 	
 	
-	@Select("select * from student_info WHERE realname LIKE #{name} AND id IN (SELECT sid FROM stu_tea WHERE tid = #{tid});")
+	@Select("select * from student_info WHERE realname LIKE #{name} AND id IN (SELECT sid FROM stu_tea WHERE tid = #{tid} AND result = 1);")
 	List<StudentInfo> selectByName(Integer tid,String name);
 	
 }

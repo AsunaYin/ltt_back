@@ -8,6 +8,10 @@ import com.hutao.ltt.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @author HUTAO
  * @Description
@@ -49,11 +53,21 @@ public class ChoseTeacherController {
 	 * @return
 	 */
 	@PostMapping("/confirm")
-	public String confirmTeacher(@RequestBody StuTea stuTea){
-		int i = choseTeacherService.addTeacherToStudent(stuTea.getSid(), stuTea.getTid());
+	public Map<String,Object> confirmTeacher(@RequestBody StuTea stuTea){
+		Map<String, Object> map = new HashMap<>();
+		//result: 0 待审核    1 通过   2 未选择
+		stuTea.setResult(0);
+		stuTea.setApplyTime(LocalDateTime.now());
+		int i = choseTeacherService.addTeacherToStudent(stuTea.getSid(), stuTea.getTid(),stuTea.getResult(),stuTea.getApplyTime());
 		if (1 == i){
-			return "success";
-		} else return "error";
+			map.put("type","success");
+			map.put("result",0);
+			map.put("msg","选择成功！等待老师审核！");
+		} else {
+			map.put("type","error");
+		}
+		return map;
+		
 	}
 	
 }

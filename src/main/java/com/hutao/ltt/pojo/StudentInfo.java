@@ -24,7 +24,10 @@ public class StudentInfo {
 	private String realName;
 	private String sex;
 	private String phone;
+	@TableField("birth_date")
 	private LocalDate birthDate;
+	@TableField("regist_date")
 	private LocalDate registDate;
+	@TableField("avatar_url")
 	private String avatarUrl;
 }

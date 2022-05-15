@@ -26,7 +26,7 @@ public interface RegisterMapper {
 	//注册后添加信息到对应的info表
 	//存入学生信息
 	@Insert("insert into student_info(account,phone,regist_date,realname) values(#{account},null,#{regist_date},#{realName})")
-	int addStudentInfo(StudentInfo studentInfo);
+	int addStudentInfo(User user);
 	
 	//存入老师信息
 	@Insert("insert into teacher_info(account,phone,regist_date,realname) values(#{account},null,#{regist_date},#{realName})")
@@ -37,7 +37,7 @@ public interface RegisterMapper {
 	int selectIdByAccount(String account);
 	
 	//在注册时，往 学生-老师 表中存入信息
-	@Insert("insert into stu_tea(sid, tid) values(#{sid},null)")
+	@Insert("insert into stu_tea(sid, tid, result) values(#{sid},null,2)")
 	int addStuTea(int id);
 	
 }

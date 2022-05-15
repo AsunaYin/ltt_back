@@ -58,7 +58,7 @@ public class RegisterController {
 				student.setAccount(user.getAccount());
 				student.setRegistDate(user.getRegist_date());
 				student.setRealName(user.getRealName());
-				registerService.addStudentInfo(student);
+				registerService.addStudentInfo(user);
 				//通过user表的 account 查找 student_info表对应 account 的 id
 				String account = user.getAccount();
 				int id = registerService.selectIdByAccount(account);

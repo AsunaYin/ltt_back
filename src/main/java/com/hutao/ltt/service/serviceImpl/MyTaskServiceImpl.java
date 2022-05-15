@@ -7,6 +7,7 @@ import com.hutao.ltt.mapper.student.MyTaskMapper;
 import com.hutao.ltt.pojo.StuTask;
 import com.hutao.ltt.pojo.StuTaskBean;
 import com.hutao.ltt.pojo.StudentInfo;
+import com.hutao.ltt.pojo.Task;
 import com.hutao.ltt.service.MyTaskService;
 import com.hutao.ltt.util.PageListUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -83,5 +84,16 @@ public class MyTaskServiceImpl implements MyTaskService {
 	@Override
 	public Integer updateStatus(String taskName, Integer statusId) {
 		return myTaskMapper.updateStatus(taskName, statusId);
+	}
+	
+	/**
+	 * 更新 stuTask 表的 statusId
+	 * @param taskName
+	 * @param statusId
+	 * @return
+	 */
+	@Override
+	public Integer updateStuTaskStatus(String taskName, Integer statusId) {
+		return myTaskMapper.updateStuTaskStatus(taskName, statusId);
 	}
 }

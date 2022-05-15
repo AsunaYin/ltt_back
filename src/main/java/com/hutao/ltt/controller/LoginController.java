@@ -46,6 +46,7 @@ public class LoginController {
 				map.put("token",token);
 				return map;
 			} else if (i == 2){
+				//老师登录
 				Integer tid = userService.selectTeacherByAccount(user.getAccount()).getId();
 				map.put("state",true);
 				map.put("msg","认证成功");
@@ -54,6 +55,7 @@ public class LoginController {
 				map.put("token",token);
 				return map;
 			} else if (i == 3){
+				//学生登录
 				Integer sid = userService.selectStudentByAccount(user.getAccount()).getId();
 				Integer tid = choseTeacherService.selectTidBySid(sid);
 				map.put("state",true);

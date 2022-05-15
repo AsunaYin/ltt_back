@@ -41,12 +41,12 @@ public class RegisterServiceImpl implements RegisterService {
 	
 	/**
 	 * 注册成功后，插入学生基本信息
-	 * @param studentInfo
+	 * @param user
 	 * @return
 	 */
 	@Override
-	public int addStudentInfo(StudentInfo studentInfo) {
-		return registerMapper.addStudentInfo(studentInfo);
+	public int addStudentInfo(User user) {
+		return registerMapper.addStudentInfo(user);
 	}
 	
 	/**

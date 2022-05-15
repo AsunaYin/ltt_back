@@ -1,7 +1,10 @@
 package com.hutao.ltt.pojo;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
+
+import java.time.LocalDateTime;
 
 /**
  * @author HUTAO
@@ -13,4 +16,14 @@ import lombok.Data;
 public class StuTea {
 	private Integer sid;
 	private Integer tid;
+	private Integer result;
+	@TableField("apply_time")
+	private LocalDateTime applyTime;
+	
+	@TableField(exist = false)
+	private String realName;
+	@TableField(exist = false)
+	private String sex;
+	@TableField(exist = false)
+	private String phone;
 }

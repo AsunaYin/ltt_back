@@ -21,4 +21,14 @@ public interface TasksService {
 	List<StudentInfo> getStudentByTid(Integer tid);
 	
 	Integer updateByTaskName(String taskName, String realName);
+	
+	Integer updateStatus(String taskName, Integer statusId);
+	
+	Integer updateStuTaskStatus(String taskName, Integer statusId);
+	
+	Integer updateFailStatus(String taskName, Integer statusId);
+	
+	Integer updateFailStuTaskStatus(String taskName, Integer statusId);
+	
+	Integer editTask(Task task);
 }

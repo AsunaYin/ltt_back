@@ -3,6 +3,7 @@ package com.hutao.ltt.mapper.student;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.hutao.ltt.pojo.TeacherInfo;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
 
 /**
  * @author HUTAO
@@ -11,5 +12,7 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface MyTeacherMapper extends BaseMapper<TeacherInfo> {
-
+	
+	@Select("select st.tid from stu_tea st,student_info si where st.sid = si.id AND si.account = #{account}")
+	Integer getTid(String account);
 }

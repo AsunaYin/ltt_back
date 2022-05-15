@@ -53,4 +53,36 @@ public class TaskTypeServiceImpl implements TaskTypeService {
 		wrapper.eq("typename",typeName);
 		return taskTypeMapper.selectCount(wrapper);
 	}
+	
+	/**
+	 * 判断当前类别是否存在任务
+	 * @param typeName
+	 * @return
+	 */
+	@Override
+	public Integer selectTypeCount(String typeName) {
+		return taskTypeMapper.selectTypeCount(typeName);
+	}
+	
+	/**
+	 * 更改任务类别名
+	 * @param taskType
+	 * @return
+	 */
+	@Override
+	public Integer updateTypeName(TaskType taskType) {
+		return taskTypeMapper.updateById(taskType);
+	}
+	
+	/**
+	 * 删除任务类别，同时删除该类别的所有任务
+	 * @param taskType
+	 * @return
+	 */
+	@Override
+	public Integer deleteType(TaskType taskType) {
+		QueryWrapper<TaskType> wrapper = new QueryWrapper<>();
+		wrapper.eq("typename",taskType.getTypeName());
+		return taskTypeMapper.delete(wrapper);
+	}
 }

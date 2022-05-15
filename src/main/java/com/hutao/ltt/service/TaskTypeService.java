@@ -16,4 +16,9 @@ public interface TaskTypeService {
 	
 	Integer confirmName(String typeName);
 	
+	Integer selectTypeCount(String typeName);
+	
+	Integer updateTypeName(TaskType taskType);
+	
+	Integer deleteType(TaskType taskType);
 }

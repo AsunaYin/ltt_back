@@ -33,4 +33,7 @@ public interface MyTaskMapper extends BaseMapper<StuTask> {
 	
 	@Update("update task set task_status_id = #{statusId} where task_name = #{taskName}")
 	Integer updateStatus(String taskName, Integer statusId);
+	
+	@Update("update stu_task set task_status_id = #{statusId} where task_name = #{taskName}")
+	Integer updateStuTaskStatus(String taskName, Integer statusId);
 }

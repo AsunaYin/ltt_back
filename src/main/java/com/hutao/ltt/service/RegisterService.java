@@ -20,7 +20,7 @@ public interface RegisterService {
 	
 	//注册成功后，插入基本信息
 	//存入学生信息
-	int addStudentInfo(StudentInfo studentInfo);
+	int addStudentInfo(User user);
 	
 	//存入老师信息
 	int addTeacherInfo(User user);

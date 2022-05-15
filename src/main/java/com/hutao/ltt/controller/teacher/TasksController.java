@@ -1,10 +1,7 @@
 package com.hutao.ltt.controller.teacher;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.hutao.ltt.pojo.RealNameBean;
-import com.hutao.ltt.pojo.StuTask;
-import com.hutao.ltt.pojo.StudentInfo;
-import com.hutao.ltt.pojo.TaskBean;
+import com.hutao.ltt.pojo.*;
 import com.hutao.ltt.service.TasksService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -77,5 +74,45 @@ public class TasksController {
 			map.put("msg","error");
 		}
 		return map;
+	}
+	
+	/**
+	 * 验收通过
+	 * @param task
+	 * @return
+	 */
+	@PostMapping("/success")
+	public String success(@RequestBody Task task){
+		String taskName = task.getTaskName();
+		Integer i = tasksService.updateStatus(taskName,4);
+		Integer j = tasksService.updateStuTaskStatus(taskName,4);
+		if (1 == i && 1 == j){
+			return "success";
+		} else return "error";
+	}
+	
+	/**
+	 * 验收不通过
+	 * @param task
+	 * @return
+	 */
+	@PostMapping("/fail")
+	public String fail(@RequestBody Task task){
+		String taskName = task.getTaskName();
+		Integer i = tasksService.updateFailStatus(taskName,5);
+		Integer j = tasksService.updateFailStuTaskStatus(taskName,5);
+		if (1 == i && 1 == j){
+			return "success";
+		} else return "error";
+	}
+	
+	@PostMapping("/editTask")
+	public String editTask(@RequestBody Task task){
+		Integer i = tasksService.editTask(task);
+		if (1 == i){
+			return "success";
+		} else {
+			return "error";
+		}
 	}
 }

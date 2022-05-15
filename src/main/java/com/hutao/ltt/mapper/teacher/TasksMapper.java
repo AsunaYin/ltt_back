@@ -41,4 +41,16 @@ public interface TasksMapper extends BaseMapper<Task> {
 	
 	@Update("update stu_task set realname = #{realName} where task_name = #{taskName}")
 	Integer updateByTaskName(String taskName,String realName);
+	
+	@Update("update task set task_status_id = #{statusId} where task_name = #{taskName}")
+	Integer updateStatus(String taskName, Integer statusId);
+	
+	@Update("update stu_task set task_status_id = #{statusId} where task_name = #{taskName}")
+	Integer updateStuTaskStatus(String taskName, Integer statusId);
+	
+	@Update("update task set task_status_id = #{statusId} where task_name = #{taskName}")
+	Integer updateFailStatus(String taskName, Integer statusId);
+	
+	@Update("update stu_task set task_status_id = #{statusId} where task_name = #{taskName}")
+	Integer updateFailStuTaskStatus(String taskName, Integer statusId);
 }

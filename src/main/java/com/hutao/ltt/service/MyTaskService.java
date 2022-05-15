@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.hutao.ltt.pojo.StuTask;
 import com.hutao.ltt.pojo.StuTaskBean;
 import com.hutao.ltt.pojo.StudentInfo;
+import com.hutao.ltt.pojo.Task;
 
 import java.util.List;
 
@@ -23,4 +24,6 @@ public interface MyTaskService {
 	String getTeacher(String taskName);
 	
 	Integer updateStatus(String taskName, Integer statusId);
+	
+	Integer updateStuTaskStatus(String taskName, Integer statusId);
 }

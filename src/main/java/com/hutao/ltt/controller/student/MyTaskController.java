@@ -67,7 +67,7 @@ public class MyTaskController {
 	}
 	
 	/**
-	 * 更新 task 表的 statusId
+	 * 更新 task 表的 statusId 和 stuTask 表的 statusId
 	 * @param task
 	 * @return
 	 */
@@ -76,7 +76,8 @@ public class MyTaskController {
 		String taskName = task.getTaskName();
 		Integer statusId = task.getTaskStatusId();
 		Integer i = myTaskService.updateStatus(taskName, statusId);
-		if (1 == i){
+		Integer j = myTaskService.updateStuTaskStatus(taskName, statusId);
+		if (1 == i && 1 == j){
 			return "success";
 		} else return "error";
 	}

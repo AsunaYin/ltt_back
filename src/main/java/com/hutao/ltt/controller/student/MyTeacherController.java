@@ -29,4 +29,13 @@ public class MyTeacherController {
 		return myTeacherService.getMyTeacher(tid);
 	}
 	
+	/**
+	 * 通过 学生account获取老师tid
+	 * @param account
+	 * @return
+	 */
+	@GetMapping("/getTid")
+	public Integer getTid(String account){
+		return myTeacherService.getTid(account);
+	}
 }

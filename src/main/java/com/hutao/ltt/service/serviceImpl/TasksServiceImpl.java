@@ -72,4 +72,43 @@ public class TasksServiceImpl implements TasksService {
 	public Integer updateByTaskName(String taskName, String realName) {
 		return tasksMapper.updateByTaskName(taskName, realName);
 	}
+	
+	/**
+	 * 验收通过
+	 * @param taskName
+	 * @param statusId
+	 * @return
+	 */
+	@Override
+	public Integer updateStatus(String taskName, Integer statusId) {
+		return tasksMapper.updateStatus(taskName, statusId);
+	}
+	
+	@Override
+	public Integer updateStuTaskStatus(String taskName, Integer statusId) {
+		return tasksMapper.updateStuTaskStatus(taskName, statusId);
+	}
+	
+	/**
+	 * 验收不通过
+	 * @param taskName
+	 * @param statusId
+	 * @return
+	 */
+	@Override
+	public Integer updateFailStatus(String taskName, Integer statusId) {
+		return tasksMapper.updateFailStatus(taskName,statusId);
+	}
+	
+	@Override
+	public Integer updateFailStuTaskStatus(String taskName, Integer statusId) {
+		return tasksMapper.updateFailStuTaskStatus(taskName,statusId);
+	}
+	
+	@Override
+	public Integer editTask(Task task) {
+		QueryWrapper<Task> wrapper = new QueryWrapper<>();
+		wrapper.eq("task_name",task.getTaskName());
+		return tasksMapper.update(task,wrapper);
+	}
 }

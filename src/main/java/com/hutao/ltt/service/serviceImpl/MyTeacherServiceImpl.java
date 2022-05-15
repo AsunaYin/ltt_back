@@ -21,4 +21,9 @@ public class MyTeacherServiceImpl implements MyTeacherService {
 	public TeacherInfo getMyTeacher(Integer tid) {
 		return myTeacherMapper.selectById(tid);
 	}
+	
+	@Override
+	public Integer getTid(String account) {
+		return myTeacherMapper.getTid(account);
+	}
 }
