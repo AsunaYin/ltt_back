@@ -29,7 +29,7 @@ public class MyTaskController {
 	@GetMapping("/getMyTask/{page}")
 	public IPage<StuTaskBean> getMyTask(@PathVariable("page")Integer pageNum, Integer sid){
 		String name = myTaskService.getNameBySid(sid);
-		return myTaskService.getMyTask(pageNum,5,name);
+		return myTaskService.getMyTask(pageNum,7,name);
 	}
 	
 	/**
@@ -53,7 +53,7 @@ public class MyTaskController {
 		String taskName = name.getRealName();
 		Integer sid = name.getSid();
 		String realName = myTaskService.getNameBySid(sid);
-		return myTaskService.selectByName(pageNum,5,taskName,realName);
+		return myTaskService.selectByName(pageNum,7,taskName,realName);
 	}
 	
 	/**

@@ -1,7 +1,11 @@
 package com.hutao.ltt.mapper;
 
+import com.hutao.ltt.pojo.Echarts;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author HUTAO
@@ -22,4 +26,13 @@ public interface StatisticalMapper {
 	
 	@Select("select count(*) from student_info where sex = '女'")
 	Integer getWomanTotal();
+	
+	@Select("SELECT tt.typename,COUNT(*) as count FROM task t,task_type tt WHERE t.task_type_id = tt.id GROUP BY tt.typename")
+	List<Echarts> getType();
+	
+	@Select("select tp.priority,count(*) as count from task t,task_priority tp where t.priority_id = tp.id group by tp.priority")
+	List<Echarts> getPriority();
+	
+	@Select("select ts.status,count(*) as count from task t,task_status ts where t.task_status_id = ts.id group by ts.status")
+	List<Echarts> getStatus();
 }

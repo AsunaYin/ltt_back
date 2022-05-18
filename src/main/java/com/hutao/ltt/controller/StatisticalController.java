@@ -1,5 +1,6 @@
 package com.hutao.ltt.controller;
 
+import com.hutao.ltt.pojo.Echarts;
 import com.hutao.ltt.service.StatisticalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -47,6 +50,36 @@ public class StatisticalController {
 		map.put("man",man);
 		map.put("woman",woman);
 		return map;
+	}
+	
+	/**
+	 * 获取任务类型数量
+	 * @return
+	 */
+	@GetMapping("/getType")
+	public List<Echarts> getNotice(){
+		List<Echarts> type = statisticalService.getType();
+		return type;
+	}
+	
+	/**
+	 * 获取任务优先度分布
+	 * @return
+	 */
+	@GetMapping("/getPriority")
+	public List<Echarts> getPriority(){
+		List<Echarts> priority = statisticalService.getPriority();
+		return priority;
+	}
+	
+	/**
+	 * 获取任务进度分布
+	 * @return
+	 */
+	@GetMapping("/getStatus")
+	public List<Echarts> getStatus(){
+		List<Echarts> status = statisticalService.getStatus();
+		return status;
 	}
 	
 }

@@ -29,7 +29,7 @@ public class TasksController {
 	 */
 	@GetMapping("/getTasks/{page}")
 	public IPage<TaskBean> getTaskByAccount(@PathVariable("page") Integer pageNum, String account){
-		IPage<TaskBean> page = tasksService.selectTasksByAccount(pageNum, 5, account);
+		IPage<TaskBean> page = tasksService.selectTasksByAccount(pageNum, 7, account);
 		return page;
 	}
 	
@@ -43,7 +43,7 @@ public class TasksController {
 	public IPage<TaskBean> searchTask(@PathVariable("page") Integer pageNum, @RequestBody RealNameBean taskName){
 		String name = taskName.getRealName();
 		String account = taskName.getAccount();
-		return tasksService.selectByName(pageNum,5,name,account);
+		return tasksService.selectByName(pageNum,7,name,account);
 	}
 	
 	/**

@@ -30,7 +30,7 @@ public class TeacherController {
 	 */
 	@GetMapping("/getAllTeachers/{page}")
 	public IPage<TeacherInfo> selectAllTeacher(@PathVariable("page") Integer pageNum) {
-		return userService.selectAllTeachersByPage(pageNum, 5);
+		return userService.selectAllTeachersByPage(pageNum, 7);
 	}
 	
 	/**
@@ -62,7 +62,7 @@ public class TeacherController {
 	@PostMapping("/searchTeacher/{page}")
 	public IPage<TeacherInfo> selectTeacherByRealName(@PathVariable("page") Integer pageNum,@RequestBody RealNameBean realName) {
 		String name = realName.getRealName();
-		return userService.selectByTeacherName(pageNum, 5, name);
+		return userService.selectByTeacherName(pageNum, 7, name);
 	}
 	
 	/**
